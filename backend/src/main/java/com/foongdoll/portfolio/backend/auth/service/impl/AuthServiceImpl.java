@@ -80,6 +80,7 @@ public class AuthServiceImpl implements AuthService {
         return BaseResponse.ok();
     }
 
+    @ApiLogging(message = "이메일 인증 - DB 조회 -> 인증코드 비교 및 DB 회원 상태 수정 -> 완료", params = true)
     @Override
     @Transactional
     public <T> T verify(String token) {
@@ -113,6 +114,7 @@ public class AuthServiceImpl implements AuthService {
         // 4. 응답
         return (T) BaseResponse.ok("이메일 인증이 완료되었습니다.");
     }
+
 
 
 

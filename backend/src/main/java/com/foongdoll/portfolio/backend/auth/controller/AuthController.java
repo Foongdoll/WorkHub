@@ -1,6 +1,6 @@
 package com.foongdoll.portfolio.backend.auth.controller;
 
-import com.foongdoll.portfolio.backend.auth.dto.SignupDto;
+import com.foongdoll.portfolio.backend.auth.dto.*;
 import com.foongdoll.portfolio.backend.auth.service.AuthService;
 import com.foongdoll.portfolio.backend.core.annotation.ApiLogging;
 import com.foongdoll.portfolio.backend.core.util.common.BaseRequest;
@@ -8,6 +8,7 @@ import com.foongdoll.portfolio.backend.core.util.common.BaseResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Auth", description = "인증 관련 API")
@@ -45,7 +46,5 @@ public class AuthController<T> {
     public BaseResponse<T> memberEmailAuthenticate(@RequestParam("token") String token) {
         return BaseResponse.ok(authService.verify(token));
     }
-
-
 
 }
